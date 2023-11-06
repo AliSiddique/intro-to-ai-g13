@@ -20,4 +20,3 @@ To run the code, simply clone this repository by typing git clone https://github
 
 
 
-# intro-to-ai-g13
