@@ -11,12 +11,16 @@ To get started with this project, you will need to have the following tools inst
 - Pandas
 - NumPy
 - Matplotlib
+- Tensorflow & Keras
 
 
 
 ## Running the Code
 
 To run the code, simply clone this repository by typing git clone https://github.com/AliSiddique/intro-to-ai-g13.git into your terminal
+
+- Mac
+```python3 -m venv env && source env/bin/activate```
 
 
 
