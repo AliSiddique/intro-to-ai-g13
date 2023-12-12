@@ -14,7 +14,7 @@ from sklearn.metrics import confusion_matrix, classification_report, f1_score, r
 # %tensorboard --logdir log
 
 # Turn data into tensors
-spotify_df = pd.read_csv("spotify_data.csv",encoding="ISO-8859-1")
+spotify_df = pd.read_csv("../spotify_data.csv",encoding="ISO-8859-1")
 
 
 
