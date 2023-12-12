@@ -55,3 +55,31 @@ model.fit(X_train, y_train_binary, epochs=20, batch_size=32, validation_split=0.
 
 loss, mae = model.evaluate(X_test, y_test)
 print(f"Mean Absolute Error (MAE) on test set: {mae}")
+
+
+from sklearn.metrics import confusion_matrix, classification_report, f1_score, recall_score
+
+# Evaluate the model on test set
+loss, accuracy = model.evaluate(X_test, y_test_binary)
+print(f"Accuracy on test set: {accuracy}")
+
+
+# Predict probabilities on test set
+y_pred_prob = model.predict(X_test)
+y_pred = (y_pred_prob > threshold).astype('int')  # Applying threshold manually
+
+# Confusion Matrix
+conf_matrix = confusion_matrix(y_test_binary, y_pred)
+print(f"Confusion Matrix:\n{conf_matrix}")
+
+# Classification Report
+class_report = classification_report(y_test_binary, y_pred)
+print(f"Classification Report:\n{class_report}")
+
+# F1-score
+f1 = f1_score(y_test_binary, y_pred)
+print(f"F1-score: {f1}")
+
+# Recall
+recall = recall_score(y_test_binary, y_pred)
+print(f"Recall: {recall}")
