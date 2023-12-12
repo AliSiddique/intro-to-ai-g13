@@ -63,3 +63,27 @@ y_pred_rf = rf_classifier.predict(X_test)
 # End timer and print prediction time
 prediction_time = time.time() - start_time
 print(f"Prediction Time: {prediction_time:.2f} seconds")
+
+
+
+# Define different numbers of trees to test
+n_estimators_list = [10, 50, 100, 200]
+
+# Store metrics for each model
+metrics = {'n_estimators': [], 'accuracy': [], 'f1_score': [], 'recall': []}
+
+for n in n_estimators_list:
+    # Initialize the Random Forest with the current number of trees
+    rf = RandomForestClassifier(n_estimators=n, random_state=42)
+    
+    # Train the model
+    rf.fit(X_train, y_train_binary)
+    
+    # Predict on test set
+    y_pred = rf.predict(X_test)
+    
+    # Store metrics
+    metrics['n_estimators'].append(n)
+    metrics['accuracy'].append(accuracy_score(y_test_binary, y_pred))
+    metrics['f1_score'].append(f1_score(y_test_binary, y_pred))
+    metrics['recall'].append(recall_score(y_test_binary, y_pred))
