@@ -29,3 +29,6 @@ spotify_df[selected_features[:-1]] = scaler.fit_transform(spotify_df[selected_fe
 X = spotify_df[selected_features[:-1]]
 y = spotify_df['danceability']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+spotify_df.danceability.unique()
