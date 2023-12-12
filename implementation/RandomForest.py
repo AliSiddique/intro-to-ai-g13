@@ -41,3 +41,25 @@ recall_rf = recall_score(y_test_binary, y_pred_rf)
 # Print metrics
 print(f"Accuracy (Random Forest): {accuracy_rf}")
 
+
+import time
+
+# Start timer
+start_time = time.time()
+
+# Train the model
+rf_classifier.fit(X_train, y_train_binary)
+
+# End timer and print training time
+training_time = time.time() - start_time
+print(f"Training Time: {training_time:.2f} seconds")
+
+# Start timer
+start_time = time.time()
+
+# Predict on test set
+y_pred_rf = rf_classifier.predict(X_test)
+
+# End timer and print prediction time
+prediction_time = time.time() - start_time
+print(f"Prediction Time: {prediction_time:.2f} seconds")
