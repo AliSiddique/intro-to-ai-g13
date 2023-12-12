@@ -100,3 +100,33 @@ plt.grid(axis='y')
 # Show the scores on top of the bars
 for i, score in enumerate(scores):
     plt.text(i, score + 0.02, f'{score:.2f}', ha='center', color='black', fontsize=12)
+
+
+
+
+
+# Plot confusion matrix
+plt.figure(figsize=(6, 6))
+plt.imshow(conf_matrix, interpolation='nearest', cmap=plt.cm.Blues)
+plt.title('Confusion Matrix')
+plt.colorbar()
+
+# Add labels and ticks
+classes = ['Not Dancable', 'Dancable']
+tick_marks = np.arange(len(classes))
+
+plt.xticks(tick_marks, classes)
+plt.yticks(tick_marks, classes)
+
+# Display numerical values in cells
+thresh = conf_matrix.max() / 2
+for i in range(conf_matrix.shape[0]):
+    for j in range(conf_matrix.shape[1]):
+        plt.text(j, i, format(conf_matrix[i, j], 'd'),
+                 horizontalalignment="center",
+                 color="white" if conf_matrix[i, j] > thresh else "black")
+
+plt.ylabel('True label')
+plt.xlabel('Predicted label')
+plt.tight_layout()
+plt.show()
