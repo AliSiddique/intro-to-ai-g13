@@ -51,3 +51,7 @@ y_test_binary = np.where(y_test > threshold, 1, 0)
 
 # Train the model
 model.fit(X_train, y_train_binary, epochs=20, batch_size=32, validation_split=0.2)
+
+
+loss, mae = model.evaluate(X_test, y_test)
+print(f"Mean Absolute Error (MAE) on test set: {mae}")
