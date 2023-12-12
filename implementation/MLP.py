@@ -13,3 +13,6 @@ import matplotlib.pyplot as plt
 # %tensorboard --logdir log
 
 
+# Turn data into tensors
+spotify_df = pd.read_csv("../spotify_data.csv",encoding="ISO-8859-1")
+spotify_df.head()
