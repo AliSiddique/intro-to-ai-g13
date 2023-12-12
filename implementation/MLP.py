@@ -32,3 +32,22 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 
 spotify_df.danceability.unique()
+
+
+# Define the model architecture
+model = Sequential([
+    Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
+    Dense(32, activation='relu'),
+    Dense(1, activation='sigmoid')  # Sigmoid activation for binary classification
+])
+
+# Compile the model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Convert labels to binary classification (0 or 1) based on threshold
+threshold = 0.5
+y_train_binary = np.where(y_train > threshold, 1, 0)
+y_test_binary = np.where(y_test > threshold, 1, 0)
+
+# Train the model
+model.fit(X_train, y_train_binary, epochs=20, batch_size=32, validation_split=0.2)
