@@ -87,3 +87,18 @@ for n in n_estimators_list:
     metrics['accuracy'].append(accuracy_score(y_test_binary, y_pred))
     metrics['f1_score'].append(f1_score(y_test_binary, y_pred))
     metrics['recall'].append(recall_score(y_test_binary, y_pred))
+
+
+
+
+    # Plot Accuracy vs Number of Estimators
+plt.figure(figsize=(10, 6))
+plt.plot(metrics['n_estimators'], metrics['accuracy'], label='Accuracy', marker='o')
+plt.plot(metrics['n_estimators'], metrics['f1_score'], label='F1 Score', marker='o')
+plt.plot(metrics['n_estimators'], metrics['recall'], label='Recall', marker='o')
+plt.xlabel('Number of Estimators')
+plt.ylabel('Scores')
+plt.title('Model Performance for Different Number of Estimators')
+plt.legend()
+plt.grid(True)
+plt.show()
