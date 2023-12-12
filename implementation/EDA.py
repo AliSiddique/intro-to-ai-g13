@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 df = pd.read_csv("../spotify_data.csv")
 
 
@@ -34,7 +33,7 @@ plt.title('Counts of Different Genres')
 plt.xlabel('Genres')
 plt.ylabel('Counts')
 plt.xticks(rotation=45)
-plt.tight_layout()
+plt.tight_layout() 
 plt.show()
 
 
