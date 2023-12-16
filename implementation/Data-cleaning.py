@@ -6,3 +6,4 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('../spotify_data.csv')
 df
 
+df.head()
