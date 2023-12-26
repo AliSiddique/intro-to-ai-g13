@@ -11,7 +11,7 @@ selected_features = ['energy', 'loudness', 'liveness', 'instrumentalness', 'danc
 spotify_df = spotify_df[selected_features]
 
 # Normalise the data using Min-Max scaling
-scaler = MinMaxScaler()
+scaler = MinMaxScaler() 
 spotify_df[selected_features[:-1]] = scaler.fit_transform(spotify_df[selected_features[:-1]])
 
 # Split data into training and testing sets
