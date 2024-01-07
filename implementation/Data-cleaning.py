@@ -12,3 +12,4 @@ df.set_index('track_id', inplace=True)
 
 null_values = df.isnull()
 null_counts = null_values.sum()
+df = df.head(150000)
