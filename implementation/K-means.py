@@ -6,12 +6,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, f1_score, recall_score
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+# Load the data
+spotify_df = pd.read_csv('../updated_spotify_data.csv')
 
-spotify_df = pd.read_csv('../spotify_data.csv')
+ # Add the selected features from the dataset
 selected_features = ['energy', 'loudness', 'liveness', 'instrumentalness', 'danceability']
 spotify_df = spotify_df[selected_features]
 
-# Normalise the data using Min-Max scaling
+# Normalise the data using Min Max scaling
 scaler = MinMaxScaler()
 spotify_df[selected_features[:-1]] = scaler.fit_transform(spotify_df[selected_features[:-1]])
 
