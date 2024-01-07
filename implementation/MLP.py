@@ -156,3 +156,23 @@ plt.ylabel('True label')
 plt.xlabel('Predicted label')
 plt.tight_layout()
 plt.show()
+
+
+
+# Data for plotting
+metrics = ['Accuracy', 'F1-score', 'Recall']
+scores = [accuracy, f1, recall]
+
+# Bar plot for performance metri
+plt.figure(figsize=(8, 6))
+plt.bar(metrics, scores, color=['blue', 'green', 'orange'])
+plt.title('Model Performance Metrics')
+plt.ylabel('Score')
+plt.ylim(0, 1)  # Set y-axis limit between 0 and 1 (for accuracy and F1 score)
+plt.grid(axis='y')
+
+# Show the scores on top of the bars
+for i, score in enumerate(scores):
+    plt.text(i, score + 0.02, f'{score:.2f}', ha='center', color='black', fontsize=12)
+
+plt.show()
