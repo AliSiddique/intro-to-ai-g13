@@ -16,13 +16,11 @@ import time
 
 # Turn data into tensors
 spotify_df = pd.read_csv("../spotify_data.csv",encoding="ISO-8859-1")
-spotify_df.head()
-
-
+# Selected relevant features
 selected_features = ['energy', 'loudness', 'liveness', 'instrumentalness', 'danceability']
 spotify_df = spotify_df[selected_features]
 
-# Normalise the data using Min-Max scaling
+# Normalise the data using Min Max scaling
 scaler = MinMaxScaler()
 spotify_df[selected_features[:-1]] = scaler.fit_transform(spotify_df[selected_features[:-1]])
 
