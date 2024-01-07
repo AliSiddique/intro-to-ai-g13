@@ -8,6 +8,7 @@ from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import time
+from sklearn.metrics import confusion_matrix, classification_report, f1_score, recall_score
 
 # Tensorboard for experimentation analysis
 # %load_ext tensorboard
@@ -83,7 +84,6 @@ plt.tight_layout()
 plt.show()
 
 
-from sklearn.metrics import confusion_matrix, classification_report, f1_score, recall_score
 
 # Evaluate the model on test set
 loss, accuracy = model.evaluate(X_test, y_test_binary)
