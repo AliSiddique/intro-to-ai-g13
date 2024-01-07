@@ -56,7 +56,7 @@ y_test_binary = np.where(y_test > threshold, 1, 0)
 start_time = time.time()
 
 # Train the model and capture training history
-history = model.fit(X_train, y_train_binary, epochs=100, batch_size=32, validation_split=0.2, verbose=0)
+history = model.fit(X_train, y_train_binary, epochs=300, batch_size=32, validation_split=0.2, verbose=0)
 
 # End timer for training
 training_time = time.time() - start_time
