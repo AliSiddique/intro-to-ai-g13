@@ -5,6 +5,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, f1_score, recall_score
 import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 
 spotify_df = pd.read_csv('../spotify_data.csv')
 selected_features = ['energy', 'loudness', 'liveness', 'instrumentalness', 'danceability']
