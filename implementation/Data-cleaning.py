@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv('../spotify_data.csv')
+df = pd.read_csv('../updated_spotify_data.csv')
 df.drop(columns=['Unnamed: 0','mode','key'], inplace=True)
 
 # Set 'track_id' as the new index
