@@ -7,6 +7,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+import time
 
 # Tensorboard for experimentation analysis
 # %load_ext tensorboard
