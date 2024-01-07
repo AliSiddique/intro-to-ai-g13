@@ -25,13 +25,13 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # Perform train-test split
 
-# Convert labels to binary classification (0 or 1) based on threshold
+# Convert labels to binary classification 
 threshold = 0.5
 y_train_binary = np.where(y_train > threshold, 1, 0)
 y_test_binary = np.where(y_test > threshold, 1, 0)
 
-# Initialize K-Nearest Neighbors Classifier
-knn_classifier = KNeighborsClassifier(n_neighbors=5)
+# Initialise K Nearest Neighbors Classifier
+knn_classifier = KNeighborsClassifier(n_neighbors=9)
 
 # Train the model
 knn_classifier.fit(X_train, y_train_binary)
@@ -68,7 +68,6 @@ tick_marks = np.arange(len(classes))
 
 plt.xticks(tick_marks, classes)
 plt.yticks(tick_marks, classes)
-
 thresh = conf_matrix_knn.max() / 2
 for i in range(conf_matrix_knn.shape[0]):
     for j in range(conf_matrix_knn.shape[1]):
