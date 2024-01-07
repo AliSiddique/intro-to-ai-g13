@@ -36,14 +36,16 @@ spotify_df.danceability.unique()
 
 # Define the model architecture
 model = Sequential([
-    Dense(16, activation='linear', input_shape=(X_train.shape[1],)),
-    Dense(6, activation='linear'),
-    # Sigmoid activation for binary classification
-    Dense(1, activation='sigmoid')
-])
+      Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
+      Dense(64, activation='relu'),
+      Dense(32, activation='relu'),
+      Dense(16, activation='relu'),
+      Dense(8, activation='relu'),
+      Dense(1, activation='sigmoid')  # Sigmoid activation for binary classification
+  ])
 
 # Compile the model
-model.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Convert labels to binary classification
 threshold = 0.5
