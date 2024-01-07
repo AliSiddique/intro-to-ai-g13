@@ -35,25 +35,52 @@ spotify_df.danceability.unique()
 
 # Define the model architecture
 model = Sequential([
-    Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
-    Dense(32, activation='relu'),
-    Dense(1, activation='sigmoid')  # Sigmoid activation for binary classification
+    Dense(16, activation='linear', input_shape=(X_train.shape[1],)),
+    Dense(6, activation='linear'),
+    # Sigmoid activation for binary classification
+    Dense(1, activation='sigmoid')
 ])
 
 # Compile the model
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
 
-# Convert labels to binary classification (0 or 1) based on threshold
+# Convert labels to binary classification
 threshold = 0.5
 y_train_binary = np.where(y_train > threshold, 1, 0)
 y_test_binary = np.where(y_test > threshold, 1, 0)
 
-# Train the model
-model.fit(X_train, y_train_binary, epochs=20, batch_size=32, validation_split=0.2)
+# Start timer for training
+start_time = time.time()
 
+# Train the model and capture training history
+history = model.fit(X_train, y_train_binary, epochs=100, batch_size=32, validation_split=0.2, verbose=0)
 
-loss, mae = model.evaluate(X_test, y_test)
-print(f"Mean Absolute Error (MAE) on test set: {mae}")
+# End timer for training
+training_time = time.time() - start_time
+print(f"Training Time: {training_time:.2f} seconds")
+
+# Plot the training history for the loss and accuracy per epoch
+plt.figure(figsize=(12, 4))
+
+# Plot training and validation loss values
+plt.subplot(1, 2, 1)
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Model Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend(['Train', 'Validation'], loc='upper right')
+
+# Plot training and validation accuracy values
+plt.subplot(1, 2, 2)
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Model Accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend(['Train', 'Validation'], loc='lower right')
+plt.tight_layout()
+plt.show()
 
 
 from sklearn.metrics import confusion_matrix, classification_report, f1_score, recall_score
