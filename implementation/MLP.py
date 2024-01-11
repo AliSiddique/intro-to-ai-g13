@@ -14,9 +14,22 @@ from sklearn.metrics import confusion_matrix, classification_report, f1_score, r
 # %load_ext tensorboard
 # %tensorboard --logdir log
 
+df = pd.read_csv('../spotify_data.csv')
+df.drop(columns=['Unnamed: 0','mode','key'], inplace=True)
+
+# Set 'track_id' as the new index
+df.set_index('track_id', inplace=True)
+
+# Set threshold
+threshold = 0.5
+
+# Apply lambda function to update danceability values
+df['danceability'] = df['danceability'].apply(lambda x: 1 if x >= threshold else 0)
+# Make a new csv file with the change data
+df.to_csv("../updated_spotify_data.csv", index=False)
 
 # Turn data into tensors
-spotify_df = pd.read_csv("../spotify_data.csv",encoding="ISO-8859-1")
+spotify_df = pd.read_csv("../updated_spotify_data.csv")
 # Selected relevant features
 selected_features = ['energy', 'loudness', 'liveness', 'instrumentalness', 'danceability']
 spotify_df = spotify_df[selected_features]
@@ -31,7 +44,6 @@ y = spotify_df['danceability']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 
-spotify_df.danceability.unique()
 
 
 # Define the model architecture

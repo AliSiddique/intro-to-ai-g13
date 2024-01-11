@@ -9,13 +9,6 @@ df.drop(columns=['Unnamed: 0','mode','key'], inplace=True)
 # Set 'track_id' as the new index
 df.set_index('track_id', inplace=True)
 
-
-null_values = df.isnull()
-null_counts = null_values.sum()
-df = df.head(150000)
-
-
-
 # Set threshold
 threshold = 0.5
 
